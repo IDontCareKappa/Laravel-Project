@@ -71,15 +71,10 @@
                     @endif
 
                     @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link text-white-50" href="#" role="button">
-                            {{ Auth::user()->name }}
-                        </a>
-
-
-
+                    <li class="nav-item">
+                        <a href="{{ route('profile') }}" class="nav-link text-white-50 "> {{ Auth::user()->name }} </a>
                     </li>
-                    <div class="nav-item flex-row justify-content-end">
+                    <div class="nav-item">
                         <a href="{{ route('logout') }}" class="nav-link text-white-50 ">Wyloguj się</a>
                     </div>
 

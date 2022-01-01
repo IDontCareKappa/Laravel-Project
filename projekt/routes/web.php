@@ -21,11 +21,14 @@ Route::get('/', [App\Http\Controllers\PostsController::class, 'index'])->name('p
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/create', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
 Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
 
 Route::group(['middleware' => ['auth']], function(){
+    Route::get('/profile', [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
+    Route::patch('/profile/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('update');
+
     Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'perform'])->name('logout.perform');
 });
