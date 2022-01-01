@@ -19,67 +19,88 @@
             crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
+    <style>
+        body{
+            background-color: #111010;
+            font-family: "Roboto";
+        }
+        .title{
+            text-align: center;
+            background-color: transparent
+        }
+        .table-container{
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .footer-button{
+            background-color: transparent;
+            float: right;
+            margin-top: 3%;
+        }
+        .bg-main{
+            background-color: #111010;
+        }
+        .bg-minor{
+            background-color: #fff;
+        }
+        table{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
 
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
+<div id="app" class="bg-main">
+    <nav class="navbar navbar-expand-md navbar-light bg-main">
 
-        <div class="container-fluid w-75 col-10">
-            <a class="navbar-brand text-primary" href="{{ url('/') }}">
-                {{ config('app.name', 'Arduino Blog') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container-fluid">
+            <div class="row w-100">
+                <div class="col-sm d-flex justify-content-start">
+                    <a class="navbar-brand text-primary" href="{{ url('/') }}">
+                        {{ config('app.name', 'Arduino Blog') }}
+                    </a>
 
-            <a class="nav-link text-white-50" href="{{ route('posts') }}">
-                Posty
-            </a>
-            <a class="nav-link text-white-50" href="#">
-                Kontakt
-            </a>
+                    <a class="nav-link text-white-50" href="{{ route('posts') }}">Posty</a>
+                    <a class="nav-link text-white-50" href="#">Kontakt</a>
+                </div>
+                <div class="col-sm d-flex justify-content-end">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
+                    <!-- Right Side Of Navbar -->
+                    <div class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <div class="nav-item">
+                                    <a class="nav-link text-white-50" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </div>
+                            @endif
 
-                </ul>
+                            @if (Route::has('register'))
+                                <div class="nav-item">
+                                    <a class="nav-link text-white-50" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </div>
+                            @endif
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                    @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link text-white-50" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @endif
+                        @else
+                            <div class="nav-item">
+                                <a href="{{ route('profile') }}" class="nav-link text-white-50 "> {{ Auth::user()->name }} </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="{{ route('logout') }}" class="nav-link text-white-50 ">Wyloguj się</a>
+                            </div>
 
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link text-white-50" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
-
-                    @else
-                    <li class="nav-item">
-                        <a href="{{ route('profile') }}" class="nav-link text-white-50 "> {{ Auth::user()->name }} </a>
-                    </li>
-                    <div class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link text-white-50 ">Wyloguj się</a>
+                        @endguest
                     </div>
-
-                    @endguest
-                </ul>
+                </div>
             </div>
         </div>
     </nav>

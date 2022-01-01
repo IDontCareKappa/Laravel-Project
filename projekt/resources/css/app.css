@@ -1,0 +1,32 @@
+.bg-main{
+    --bs-bg-opacity: 1;
+    background-color: #111010 !important;
+}
+
+body{
+    background-color: #111010;
+    font-family: "Roboto";
+}
+.title{
+    text-align: center;
+    background-color: transparent
+}
+.table-container{
+    max-width: 900px;
+    margin: 0 auto;
+}
+.footer-button{
+    background-color: transparent;
+    float: right;
+    margin-top: 3%;
+}
+.bg-main{
+    background-color: #111010;
+}
+.bg-minor{
+    background-color: #fff;
+}
+table{
+    max-width: 800px;
+    margin: 0 auto;
+}

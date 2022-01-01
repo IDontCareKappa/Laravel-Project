@@ -22,7 +22,6 @@ class UserController extends Controller
          * fetching the user model
          **/
         $user = Auth::user();
-        //var_dump($user);
 
         /**
          * Passing the user data to profile view
@@ -66,8 +65,5 @@ class UserController extends Controller
         return back();
     }
 
-    public function perform(){
-        return redirect('login');
-    }
 
 }

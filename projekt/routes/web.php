@@ -25,6 +25,14 @@ Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->nam
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/create', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
 Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
+Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destroy'])->name('delete');
+Route::get('/edit/{id}', [\App\Http\Controllers\PostsController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [\App\Http\Controllers\PostsController::class, 'update'])->name('updatepost');
+
+
+
+//TO DO
+//Route::get('/contact', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', [\App\Http\Controllers\UserController::class, 'index'])->name('profile');

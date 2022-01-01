@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -51,7 +52,8 @@ class PostsController extends Controller
         $post->message = $request->message;
         $post->title = $request->title;
         if ($post->save()){
-            return redirect('posts');
+            return redirect('posts')->with(['success' => true, 'message_type' => 'success',
+                'message' => 'Zapisano post.']);;
         }
 
         return view('posts');
@@ -76,7 +78,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        if (Auth::user()->id != $post->user_id) {
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+        }
+
+        return view('postsEdit', ['post'=>$post]);
     }
 
     /**
@@ -88,17 +97,45 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if (Auth::user()->id != $post->user_id){
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+        }
+
+        $post->title = $request->title;
+        $post->message = $request->message;
+
+        if ($post->save()){
+            return redirect()->route('posts');
+        }
+
+        return back()->with(['success' => false, 'message_type' => 'danger',
+            'message' => 'Nie udało się wykonać tej operacji.']);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        if (Auth::user()->id != $post->user_id){
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);;
+        }
+
+        if ($post->delete()){
+            return redirect()->route('posts');
+        } else {
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Nie udało się wykonać tej operacji.']);
+        }
     }
 }
