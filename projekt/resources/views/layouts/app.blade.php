@@ -65,12 +65,12 @@
         <div class="container-fluid">
             <div class="row w-100">
                 <div class="col-sm d-flex justify-content-start">
-                    <a class="navbar-brand text-primary" href="{{ url('/') }}">
-                        {{ config('app.name', 'Arduino Blog') }}
+                    <a class="navbar-brand text-primary slideLeft" href="{{ url('/') }}">
+                        {{ config('app.name', 'FORUM') }}
                     </a>
 
-                    <a class="nav-link text-white-50" href="{{ route('posts') }}">Posty</a>
-                    <a class="nav-link text-white-50" href="#">Kontakt</a>
+                    <a class="nav-link text-white-50 slideLeft" href="{{ route('posts') }}">Posty</a>
+                    <a class="nav-link text-white-50 slideLeft" href="#">Kontakt</a>
                 </div>
                 <div class="col-sm d-flex justify-content-end">
 
@@ -79,22 +79,22 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <div class="nav-item">
-                                    <a class="nav-link text-white-50" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <div class="nav-item slideRight">
+                                    <a class="nav-link text-white-50" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
                                 </div>
                             @endif
 
                             @if (Route::has('register'))
-                                <div class="nav-item">
-                                    <a class="nav-link text-white-50" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <div class="nav-item slideRight">
+                                    <a class="nav-link text-white-50" href="{{ route('register') }}">{{ __('Rejestracja') }}</a>
                                 </div>
                             @endif
 
                         @else
-                            <div class="nav-item">
+                            <div class="nav-item slideRight">
                                 <a href="{{ route('profile') }}" class="nav-link text-white-50 "> {{ Auth::user()->name }} </a>
                             </div>
-                            <div class="nav-item">
+                            <div class="nav-item slideRight">
                                 <a href="{{ route('logout') }}" class="nav-link text-white-50 ">Wyloguj się</a>
                             </div>
 

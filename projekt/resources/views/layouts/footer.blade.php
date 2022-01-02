@@ -27,46 +27,18 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
-    <style>
-        body{
-            background-color: #111010;
-            font-family: "Roboto";
-        }
-        .title{
-            text-align: center;
-            background-color: transparent
-        }
-        .table-container{
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .footer-button{
-            background-color: transparent;
-            float: right;
-            margin-top: 3%;
-        }
-        .bg-main{
-            background-color: #111010;
-        }
-        .bg-minor{
-            background-color: #fff;
-        }
-        table{
-            max-width: 800px;
-            margin: 0 auto;
-        }
-    </style>
+
 
 </head>
 <body>
 <footer>
-    <div class="container col-8 px-4">
-        <div class="row mt-5">
-            <div class="col-sm-6">
-                <h6 class="mb20">LET'S WORK TOGETHER</h6>
-                <h3><a class="icon" href="mailto:tomasz.ostrowski1@pollub.edu.pl">tomasz.ostrowski1@pollub.edu.pl</a></h3>
+    <div class="container col-8 px-4 fadeIn">
+        <div class="row mt-10">
+            <div class="col-sm-8">
+                <h6 class="text-muted">WSPÓŁPRACA I KONTAKT</h6>
+                <h4><a class="icon" href="mailto:tomasz.ostrowski1@pollub.edu.pl">tomasz.ostrowski1@pollub.edu.pl</a></h4>
             </div>
-            <div class="col-sm-6 d-flex justify-content-end my-4">
+            <div class="col-sm-4 d-flex justify-content-end my-4">
                 <ul class="list-inline list-unstyled">
                     <li class="list-inline-item">
                         <a href="mailto:tomasz.ostrowski1@pollub.edu.pl" target="_blank" class="icon">
@@ -93,8 +65,8 @@
 
                 </ul>
             </div>
-            <div class="col-sm-12">
-                <p class="small">© 2022 DESIGNED & DEVELOPED BY TOMASZ OSTROWSKI.</p>
+            <div class="col-sm-12 mt-10">
+                <p class="small text-muted">© 2022 DESIGNED & DEVELOPED BY TOMASZ OSTROWSKI.</p>
             </div>
         </div>
 

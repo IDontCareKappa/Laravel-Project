@@ -18,9 +18,11 @@
 
     </head>
     <body>
-
-        <div class="table-container">
-            <div class="title bg-main p-2"> <h3 class="text-white">Utwórz nowy post</h3> </div>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="table-container fadeIn">
+            <div class="title  p-2"> <h1 class="text-white">Utwórz nowy post</h1> </div>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -30,24 +32,23 @@
                 </ul>
             </div>
             @endif
-            <div class="box box-primary bg-main p-2">
-             <form role="form"  action="{{ route('store') }}" id="comment-form"
-                   method="post" enctype="multipart/form-data" >
+            <div class="box box-primary p-2 fadeIn">
+             <form role="form"  action="{{ route('store') }}" id="comment-form" method="post" enctype="multipart/form-data" >
                {{ csrf_field() }}
-               <div class="box">
+               <div class="box fadeIn">
                  <div class="box-body">
                      <div class="form-group{{ $errors->has('title')?'has-error':'' }}" id="roles_box">
                          <label class="text-white-50"><b>Wpisz tytuł</b></label> <br>
                      <textarea class="bg-minor p-1" name="title" id="title" cols="50" rows="1" required></textarea>
                      </div>
-                     <div class="form-group{{ $errors->has('message')?'has-error':'' }}" id="roles_box">
+                     <div class="form-group{{ $errors->has('message')?'has-error':'' }} fadeIn" id="roles_box">
                        <label class="text-white-50"><b>Wpisz treść</b></label> <br>
                     <textarea class="bg-minor p-1" name="message" id="message" cols="50" rows="10" required></textarea>
                    </div>
                  </div>
                 </div>
-                 <div class="row d-flex justify-content-center">
-                     <div class="addPostBtn p-0 col-11">
+                 <div class="row d-flex justify-content-center fadeIn">
+                     <div class="addPostBtn p-0 col-11 fadeIn">
                          <button type="submit" value="" class="box-shadow">
                              <div class="row">
                                  <div class="col align-self-start"></div>
@@ -61,12 +62,11 @@
                          </button>
                      </div>
                  </div>
-
-
-{{--                 <div class="box-footer"><button type="submit" class="btn btn-success">Utwórz</button>--}}
-              </div>
              </form>
-            </div>
+              </div>
         </div>
+
+        </div>
+        @include('layouts.footer')
     </body>
 </html>

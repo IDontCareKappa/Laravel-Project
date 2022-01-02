@@ -37,7 +37,6 @@ class UserController extends Controller
          */
         $user = Auth::user();
 
-
         /**
          * Validate request/input
          **/
@@ -62,7 +61,7 @@ class UserController extends Controller
         /**
          * after everything is done return them pack to /profile/ uri
          **/
-        return back();
+        return redirect()->route('posts');
     }
 
 

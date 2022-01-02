@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
+Route::get('/post/{id}', [App\Http\Controllers\PostsController::class, 'show'])->name('show');
 Route::get('/create', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
 Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
 Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destroy'])->name('delete');
