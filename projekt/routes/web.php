@@ -29,6 +29,7 @@ Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->
 Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destroy'])->name('delete');
 Route::get('/edit/{id}', [\App\Http\Controllers\PostsController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [\App\Http\Controllers\PostsController::class, 'update'])->name('updatepost');
+Route::get('/addGrade/{id}/{grade}', [\App\Http\Controllers\PostsController::class, 'addGrade'])->name('addGrade');
 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 

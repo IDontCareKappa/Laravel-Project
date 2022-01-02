@@ -44,7 +44,7 @@ table{
     background-color: #333;
 }
 
-.addPostBtn > Button{
+.addPostBtn > a{
     width: 100%;
     height: 100%;
     padding: 3%;
@@ -54,16 +54,18 @@ table{
     transition-duration: 0.4s;
 }
 
+.addPostBtn > a:hover{
+    background-color: #3d3a3a;
+    text-decoration: none;
+}
+
+.addPostBtn > a:focus{
+    border: none;
+}
+
+
 .box-shadow{
     box-shadow: 0px 10px 20px #050505;
-}
-
-.addPostBtn > Button:hover{
-    background-color: #3d3a3a;
-}
-
-.addPostBtn > Button:focus{
-    border: none;
 }
 
 .smallBtn{

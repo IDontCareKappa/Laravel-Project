@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->get();
         return view('posts', ['posts' => $posts]);
     }
 
@@ -43,20 +43,24 @@ class PostsController extends Controller
             'message' => 'required|min:10|max:1000',
         ]);
 
-        if (\Auth::user() == null){
-            return view('home');
+        if (Auth::user() == null){
+            return redirect()->route('/login')->withErrors(['msg' => 'Nie jestes zalogowany']);
         }
 
         $post = new Post();
-        $post->user_id = \Auth::user()->id;
+        $post->user_id = Auth::user()->id;
         $post->message = $request->message;
         $post->title = $request->title;
+        $post->grade = 0.0;
+        $post->grade_count = 0;
+        $post->grade_sum = 0;
+        $post->users_that_added_grade = "";
         if ($post->save()){
             return redirect('posts')->with(['success' => true, 'message_type' => 'success',
-                'message' => 'Zapisano post.']);;
+                'msg' => 'Zapisano post.']);
         }
 
-        return view('posts');
+        return redirect()->route('posts')->withErrors(['msg' => 'Nie udało się zapisać postu!']);
     }
 
     /**
@@ -82,10 +86,13 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        if (Auth::user()->id != $post->user_id) {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+        if (Auth::user() == null){
+            return back()->withErrors(['msg' => 'Nie masz dostępu do tej strony!']);
         }
+        if (Auth::user()->id != $post->user_id) {
+            return back()->withErrors(['msg' => 'Nie jesteś autorem tego postu!']);
+        }
+
 
         return view('postsEdit', ['post'=>$post]);
     }
@@ -102,19 +109,23 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if (Auth::user()->id != $post->user_id){
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+            return back()->withErrors(['msg', 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
         }
+
+        $this->validate($request, [
+            'title' => 'required|min:5|max:100',
+            'message' => 'required|min:10|max:1000',
+        ]);
 
         $post->title = $request->title;
         $post->message = $request->message;
 
         if ($post->save()){
-            return redirect()->route('posts');
+            return redirect()->route('posts')->with(['success' => true, 'message_type' => 'success',
+                'msg' => 'Zapisano zmiany.']);
         }
 
-        return back()->with(['success' => false, 'message_type' => 'danger',
-            'message' => 'Nie udało się wykonać tej operacji.']);
+        return back()->withErrors(['msg', 'Nie udało się wykonać tej operacji.']);
 
     }
 
@@ -129,15 +140,56 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if (Auth::user()->id != $post->user_id){
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);;
+            return back()->withErrors(['msg', 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
         }
 
         if ($post->delete()){
-            return redirect()->route('posts');
-        } else {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie udało się wykonać tej operacji.']);
+            return redirect()->route('posts')->with(['success' => true, 'message_type' => 'success',
+                'msg' => 'Pomyślnie usunięto post.']);;
         }
+
+        return back()->withErrors(['msg', 'Nie udało się wykonać tej operacji.']);
+    }
+
+    public function addGrade($id, $grade)
+    {
+        $post = Post::find($id);
+        $users_that_added_grade = $this->getUsersThatAddedGrade($post);
+
+        if (!$this->isUserAddedGrade($post)){
+            $post = $this->updatePostGrade($post, $grade);
+            $user_id = (int)Auth::user()->id;
+            array_push($users_that_added_grade, $user_id);
+            $post->users_that_added_grade = implode(',', $users_that_added_grade);
+
+            if ($post->save()){
+                return redirect()->route('posts');
+            }
+        } else {
+            return back()->withErrors(['msg' => 'Już dodałeś ocenę do tego posta!']);
+        }
+
+        return back()->withErrors(['msg' => 'Nie udało się wykonać tej operacji!']);
+
+    }
+
+    public function getUsersThatAddedGrade($post){
+        $users_that_added_grade = array_map(function ($value){
+            return (int)$value;
+        }, explode(',', $post->users_that_added_grade));
+
+        return $users_that_added_grade;
+    }
+
+    public function isUserAddedGrade($post){
+        return in_array(Auth::user()->id, $this->getUsersThatAddedGrade($post));
+    }
+
+    public function updatePostGrade($post, $grade){
+        $post->grade_count++;
+        $post->grade_sum += $grade;
+        $post->grade = round($post->grade_sum / $post->grade_count,2);
+
+        return $post;
     }
 }
