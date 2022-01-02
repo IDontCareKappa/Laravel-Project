@@ -70,7 +70,7 @@
                     </a>
 
                     <a class="nav-link text-white-50 slideLeft" href="{{ route('posts') }}">Posty</a>
-                    <a class="nav-link text-white-50 slideLeft" href="#">Kontakt</a>
+                    <a class="nav-link text-white-50 slideLeft" href="{{ route('contact') }}">Kontakt</a>
                 </div>
                 <div class="col-sm d-flex justify-content-end">
 

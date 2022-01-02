@@ -1,3 +1,10 @@
+/*Leaflet map*/
+#map {
+    height: 280px;
+    width: 1000px;
+}
+
+
 .bg-main{
     --bs-bg-opacity: 1;
     background-color: #111010 !important;
@@ -97,6 +104,32 @@ table{
 
 .icon:hover{
     color: #bdbdbd;
+}
+
+.linkedin{
+    transition-duration: 0.4s;
+}
+
+
+.linkedin:hover{
+    color: #007bb5;
+}
+
+.github{
+    transition-duration: 0.4s;
+}
+
+
+.github:hover{
+    color: #000000;
+}
+
+.gmail{
+    transition-duration: 0.4s;
+}
+
+.gmail:hover{
+    color: #dd4b39;
 }
 
 .mt-10 {
@@ -204,4 +237,14 @@ table{
     100% {
         transform:translateX(25%);
     }
+}
+
+/*Kontakt*/
+
+.contact{
+    text-decoration: underline;
+}
+
+.contact-underline{
+    margin-top: -2%;
 }

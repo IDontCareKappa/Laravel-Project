@@ -30,10 +30,7 @@ Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destr
 Route::get('/edit/{id}', [\App\Http\Controllers\PostsController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [\App\Http\Controllers\PostsController::class, 'update'])->name('updatepost');
 
-
-
-//TO DO
-//Route::get('/contact', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', [\App\Http\Controllers\UserController::class, 'index'])->name('profile');

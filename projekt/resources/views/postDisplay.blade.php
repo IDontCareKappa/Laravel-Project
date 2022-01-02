@@ -41,13 +41,13 @@
             <div class="col-sm-12 addPostBtn p-0 fadeIn">
                 <button type="submit" value="" class="box-shadow" onclick="window.location='{{ route('posts') }}'">
                     <div class="row">
-                        <div class="col align-self-start"></div>
-                        <div class="col align-self-center">POWRÓT</div>
-                        <div class="col align-self-end text-end">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-80 5 100 10" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        <div class="col align-self-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 100 10" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
+                        <div class="col align-self-center">POWRÓT</div>
+                        <div class="col align-self-end text-end"></div>
                     </div>
                 </button>
             </div>
