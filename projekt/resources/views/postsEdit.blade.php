@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Edycja postu')
+@section('posts', 'active')
 
 @section('scripts')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -39,13 +39,13 @@
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label><b class="text-white-50">Tytuł</b></label><br>
-                            <textarea class="bg-minor p-2" name="title" id="title" cols="50" rows="1"
+                            <textarea class="bg-minor p-2" minlength="10" maxlength="100" name="title" id="title" cols="50" rows="2"
                                       required>{{$post->title}}</textarea>
                         </div>
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }} fadeIn"
                              id="roles_box">
                             <label><b class="text-white-50">Treść</b></label><br>
-                            <textarea class="bg-minor p-2" name="message" id="message" cols="50" rows="10"
+                            <textarea class="bg-minor p-2" minlength="15" maxlength="3000" name="message" id="message" cols="50" rows="10"
                                       required>{{$post->message}}</textarea>
                         </div>
                     </div>

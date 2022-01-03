@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Logowanie')
+@section('login', 'active')
 
 @section('scripts')
 

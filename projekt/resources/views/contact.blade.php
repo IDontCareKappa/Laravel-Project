@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Kontakt')
+@section('contact', 'active')
 
 @section('scripts')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"

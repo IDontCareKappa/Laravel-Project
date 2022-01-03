@@ -24,18 +24,19 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/post/{id}', [App\Http\Controllers\PostsController::class, 'show'])->name('show');
-Route::get('/create', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
-Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
-Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destroy'])->name('delete');
-Route::get('/edit/{id}', [\App\Http\Controllers\PostsController::class, 'edit'])->name('edit');
-Route::put('/update/{id}', [\App\Http\Controllers\PostsController::class, 'update'])->name('updatepost');
-Route::get('/addGrade/{id}/{grade}', [\App\Http\Controllers\PostsController::class, 'addGrade'])->name('addGrade');
-
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
     Route::patch('/profile/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('update');
+
+    Route::get('/create', [App\Http\Controllers\PostsController::class, 'create'])->name('create');
+    Route::post('/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
+    Route::get('/delete/{id}', [\App\Http\Controllers\PostsController::class, 'destroy'])->name('delete');
+    Route::get('/edit/{id}', [\App\Http\Controllers\PostsController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [\App\Http\Controllers\PostsController::class, 'update'])->name('updatepost');
+    Route::get('/addGrade/{id}/{grade}', [\App\Http\Controllers\PostsController::class, 'addGrade'])->name('addGrade');
+
 
     Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'perform'])->name('logout.perform');
 });

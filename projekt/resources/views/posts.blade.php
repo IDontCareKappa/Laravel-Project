@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Forum')
+@section('posts', 'active')
 
 @section('scripts')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

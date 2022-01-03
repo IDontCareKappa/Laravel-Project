@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Dodaj post')
+@section('posts', 'active')
 
 @section('scripts')
     <meta charset="utf-8">
@@ -25,23 +25,16 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
 @endsection
+
 @section('background')
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
 @endsection
+
 @section('content')
     <div class="table-container fadeIn">
         <div class="title  p-2"><h1 class="text-white">Utwórz nowy post</h1></div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="box box-primary p-2 fadeIn">
             <form role="form" action="{{ route('store') }}" id="comment-form" method="post"
                   enctype="multipart/form-data">
@@ -50,12 +43,12 @@
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('title')?'has-error':'' }}" id="roles_box">
                             <label class="text-white-50"><b>Wpisz tytuł</b></label> <br>
-                            <textarea class="bg-minor p-1" name="title" id="title" cols="50" rows="1"
+                            <textarea class="bg-minor p-1" minlength="10" maxlength="100" name="title" id="title" cols="50" rows="2"
                                       required></textarea>
                         </div>
                         <div class="form-group{{ $errors->has('message')?'has-error':'' }} fadeIn" id="roles_box">
                             <label class="text-white-50"><b>Wpisz treść</b></label> <br>
-                            <textarea class="bg-minor p-1" name="message" id="message" cols="50" rows="10"
+                            <textarea class="bg-minor p-1" minlength="15" maxlength="3000" name="message" id="message" cols="50" rows="10"
                                       required></textarea>
                         </div>
                     </div>
@@ -66,13 +59,8 @@
                             <div class="row">
                                 <div class="col align-self-start"></div>
                                 <div class="col align-self-center">DODAJ POST</div>
-                                <div class="col align-self-end text-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-40 0 60 20"
-                                         fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
+                                <div class="col align-self-end d-flex justify-content-end my-auto">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </button>

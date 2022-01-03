@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('pagetitle', 'Edycja profilu')
+@section('profile', 'active')
 
 
 @section('scripts')
@@ -31,7 +31,7 @@
                 <div class="col d-flex justify-content-center">
                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }} col-6 fadeIn">
                         <label for="name" class="control-label text-white"><b>Nazwa:</b></label>
-                        <input type="text" name="name" id="name" placeholder="Wprowadź swoją nazwę użytkownika" class="form-control" value="{{ Auth::user()->name }}"/>
+                        <input type="text" min="5" max="255" required name="name" id="name" placeholder="Wprowadź swoją nazwę użytkownika" class="form-control" value="{{ Auth::user()->name }}"/>
 
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} col-6 fadeIn">
                         <label for="email" class="control-label text-white"><b>Email:</b></label>
-                        <input type="text" name="email" id="email" placeholder="Wprowadź swój adres e-mail" class="form-control" value="{{ Auth::user()->email }}"/>
+                        <input type="text" min="5" max="255" required name="email" id="email" placeholder="Wprowadź swój adres e-mail" class="form-control" value="{{ Auth::user()->email }}"/>
 
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -60,10 +60,8 @@
                         <span class="row">
                             <span class="col align-self-start"></span>
                             <span class="col align-self-center">ZAPISZ</span>
-                            <span class="col align-self-end text-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-80 5 100 10" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                </svg>
+                            <span class="col align-self-end d-flex justify-content-end my-auto">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
                             </span>
                         </span>
                     </button>

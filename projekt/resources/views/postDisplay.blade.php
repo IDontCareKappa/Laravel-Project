@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
 @section('pagetitle')
     {{ $post->title }}
 @endsection
+@section('posts', 'active')
 
 @section('scripts')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
