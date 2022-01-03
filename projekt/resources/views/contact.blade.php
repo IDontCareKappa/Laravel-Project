@@ -36,16 +36,16 @@
         <div class="card bg-transparent border-0 mt-5 fadeIn">
             <div class="card-body bg-transparent text-white-50 text-uppercase fadeIn">
                 <div class="border-bottom border-dark col-sm-12 row p-0 m-0">
-                    <b class="h4 col-sm-4 d-flex justify-content-start">ADRES</b>
-                    <b class="h4 col-sm-8 d-flex justify-content-end">Nadbystrzycka 38A, 20-618 Lublin</b>
+                    <b class="h4 col-12 col-md-4 col-lg-4 d-flex justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">ADRES</b>
+                    <b class="h4 col-12 col-md-8  col-lg-8  d-flex justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-end">Nadbystrzycka 38A, 20-618 Lublin</b>
                 </div>
                 <div class="border-bottom border-dark col-sm-12 row p-0 m-0 mt-5 fadeIn fadeIn">
-                    <b class="h4 col-sm-6 d-flex justify-content-start">TELEFON</b>
-                    <b class="h4 col-sm-6 d-flex justify-content-end">+48 123 456 789</b>
+                    <b class="h4 col-12 col-md-4 col-lg-4 d-flex justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">TELEFON</b>
+                    <b class="h4 col-12 col-md-8  col-lg-8  d-flex justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-end">+48 123 456 789</b>
                 </div>
                 <div class="border-bottom border-dark col-sm-12 row p-0 m-0 mt-5 fadeIn fadeIn">
-                    <b class="h4 col-sm-6 d-flex justify-content-start">E-MAIL</b>
-                    <b class="h4 col-sm-6 d-flex justify-content-end">tomasz.ostrowski1@pollub.edu.pl</b>
+                    <b class="h4 col-12 col-md-4 col-lg-4 d-flex justify-content-center justify-content-sm-center justify-content-md-start justify-content-lg-start">E-MAIL</b>
+                    <b class="h4 col-12 col-md-8  col-lg-8  d-flex justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-end">tomasz.ostrowski1@pollub.edu.pl</b>
                 </div>
 
             </div>

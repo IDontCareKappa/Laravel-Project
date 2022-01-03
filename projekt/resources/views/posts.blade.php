@@ -4,16 +4,17 @@
 
 @section('scripts')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('font-awesome.css') }}">
 @endsection
 @section('background')
     <div class="bg"></div>
@@ -26,22 +27,21 @@
             <h1>Posty użytkowników</h1>
         </div>
         @auth
-            <div class="row d-flex justify-content-center">
-                <div class="col-sm-9 addPostBtn p-0">
-                    <a type="submit" value="" class="box-shadow" href="{{ route('create') }}">
-                        <div class="row">
-                            <div class="col-sm-1 align-self-start"></div>
-                            <div class="col-sm-10 align-self-center text-white text-center">DODAJ POST</div>
-                            <div class="col-sm-1 align-self-end text-end text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="5 5 10 10" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </a>
+            <form action="{{ route('create') }}">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-9 addPostBtn p-0">
+                        <button class="box-shadow" href="{{ route('create') }}">
+                            <span class="row">
+                                <span class="col-2 align-self-start"></span>
+                                <span class="col-8 align-self-center text-white text-center">DODAJ POST</span>
+                                <span class="col-2 align-self-end d-flex justify-content-end my-auto">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-
+            </form>
         @endauth
 
         @guest
@@ -49,17 +49,15 @@
                 <b class="text-muted">Zaloguj się aby dodawać posty.</b>
                 <br>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-sm-9 addPostBtn p-0">
+                    <div class="col-9 addPostBtn p-0">
                         <button type="submit" value="" class="box-shadow" onclick="window.location='{{ route('login') }}'">
-                            <div class="row">
-                                <div class="col align-self-start"></div>
-                                <div class="col align-self-center">ZALOGUJ SIĘ</div>
-                                <div class="col align-self-end text-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-80 5 100 10" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
+                            <span class="row">
+                                <span class="col align-self-start"></span>
+                                <span class="col align-self-center">ZALOGUJ SIĘ</span>
+                                <span class="col align-self-end d-flex justify-content-end my-auto">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </span>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -91,11 +89,11 @@
                                     <b><small>Liczba ocen: {{ $post->grade_count }}</small></b>
                                 </p>
                             </div>
-                            <div class="col-sm d-flex justify-content-end">
+                            <div class="col d-flex justify-content-end">
                                 @auth
                                     @if($post->user_id == Auth::user()->id)
                                         <div class="row d-flex justify-content-center">
-                                            <div class="col-sm-4" >
+                                            <div class="col-4" >
                                                <form action="{{ route('delete', $post->id) }}">
                                                    <button type="submit" value=""  class="box-shadow smallBtn border-0" onclick="return confirm('Jesteś pewien?')">
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-danger" height="20" width="20" viewBox="0 0 20 20" fill="currentColor">
@@ -105,7 +103,7 @@
                                                </form>
 
                                             </div>
-                                            <div class="col-sm-6 " >
+                                            <div class="col-6 " >
                                                 <form action="{{ route('edit', $post) }}">
                                                     <button type="submit" value=""  class="box-shadow smallBtn border-0">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon text-info" height="20" width="20" viewBox="0 0 20 20" fill="currentColor">

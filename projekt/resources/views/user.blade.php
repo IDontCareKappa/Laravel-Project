@@ -4,8 +4,6 @@
 
 
 @section('scripts')
-
-    <title>Profil Użytkownika</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
@@ -32,8 +30,8 @@
             <div class="box">
                 <div class="col d-flex justify-content-center">
                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }} col-6 fadeIn">
-                        <label for="email" class="control-label text-white"><b>Nazwa:</b></label>
-                        <input type="text" name="name" placeholder="Wprowadź swoją nazwę użytkownika" class="form-control" value="{{ Auth::user()->name }}"/>
+                        <label for="name" class="control-label text-white"><b>Nazwa:</b></label>
+                        <input type="text" name="name" id="name" placeholder="Wprowadź swoją nazwę użytkownika" class="form-control" value="{{ Auth::user()->name }}"/>
 
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -44,7 +42,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} col-6 fadeIn">
                         <label for="email" class="control-label text-white"><b>Email:</b></label>
-                        <input type="text" name="email" placeholder="Wprowadź swój adres e-mail" class="form-control" value="{{ Auth::user()->email }}"/>
+                        <input type="text" name="email" id="email" placeholder="Wprowadź swój adres e-mail" class="form-control" value="{{ Auth::user()->email }}"/>
 
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -59,15 +57,15 @@
             <div class="row d-flex justify-content-center fadeIn">
                 <div class="col-sm-11 addPostBtn p-0 ">
                     <button type="submit" value="" class="box-shadow">
-                        <div class="row">
-                            <div class="col align-self-start"></div>
-                            <div class="col align-self-center">ZAPISZ</div>
-                            <div class="col align-self-end text-end">
+                        <span class="row">
+                            <span class="col align-self-start"></span>
+                            <span class="col align-self-center">ZAPISZ</span>
+                            <span class="col align-self-end text-end">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-80 5 100 10" fill="currentColor">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                            </div>
-                        </div>
+                            </span>
+                        </span>
                     </button>
                 </div>
             </div>

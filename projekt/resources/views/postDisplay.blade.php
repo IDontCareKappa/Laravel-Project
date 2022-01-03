@@ -44,16 +44,26 @@
                     <div class="mt-10">
                         <p class="h5 text-muted">
                             OCEŃ POST
-                            <span class="bg-dark rounded-circle m-2"><a class="text-white h5 p-2"
-                                                                        href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>1.0]) }}">1</a></span>
-                            <span class="bg-dark rounded-circle m-2"><a class="text-white h5 p-2"
-                                                                        href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>2.0]) }}">2</a></span>
-                            <span class="bg-dark rounded-circle m-2"><a class="text-white h5 p-2"
-                                                                        href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>3.0]) }}">3</a></span>
-                            <span class="bg-dark rounded-circle m-2"><a class="text-white h5 p-2"
-                                                                        href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>4.0]) }}">4</a></span>
-                            <span class="bg-dark rounded-circle m-2"><a class="text-white h5 p-2"
-                                                                        href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>5.0]) }}">5</a></span>
+                            <span class="bg-dark rounded-circle m-2">
+                                <a class="text-white h5 p-2"
+                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>1.0]) }}">1</a>
+                            </span>
+                            <span class="bg-dark rounded-circle m-2">
+                                <a class="text-white h5 p-2"
+                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>2.0]) }}">2</a>
+                            </span>
+                            <span class="bg-dark rounded-circle m-2">
+                                <a class="text-white h5 p-2"
+                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>3.0]) }}">3</a>
+                            </span>
+                            <span class="bg-dark rounded-circle m-2">
+                                <a class="text-white h5 p-2"
+                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>4.0]) }}">4</a>
+                            </span>
+                            <span class="bg-dark rounded-circle m-2">
+                                <a class="text-white h5 p-2"
+                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>5.0]) }}">5</a>
+                            </span>
                         </p>
 
                     </div>
@@ -61,18 +71,19 @@
             </div>
 
             <div class="card-footer border-0 mt-5">
-                <div class="col-sm-12 addPostBtn p-0 fadeIn">
-                    <a type="submit" value="" class="box-shadow" href="{{ route('create') }}">
-                        <div class="row">
-                            <div class="col-sm-1 align-self-start"></div>
-                            <div class="col-sm-10 align-self-center text-white text-center">DODAJ POST</div>
-                            <div class="col-sm-1 align-self-end text-end text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="5 5 10 10" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </a>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 addPostBtn p-0">
+                        <button type="submit" value="" class="box-shadow"
+                                onclick="window.location='{{ route('posts') }}'">
+                            <span class="row">
+                                <span class="col align-self-start d-flex justify-content-start">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </span>
+                                <span class="col align-self-center">POWRÓT</span>
+                                <span class="col align-self-end text-end"></span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

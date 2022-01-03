@@ -31,14 +31,13 @@
     <div class="table-container fadeIn">
         <div class="title p-2"><h1 class="text-white">Edycja postu</h1></div>
         <div class="box box-primary p-2 fadeIn">
-            <form role="form" id="post-form" method="post"
+            <form id="post-form" method="post"
                   action="{{ route('updatepost', $post) }}">
                 {{ csrf_field() }}
                 <input name="_method" type="hidden" value="PUT">
                 <div class="box">
                     <div class="box-body">
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}"
-                             id="roles_box">
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label><b class="text-white-50">Tytuł</b></label><br>
                             <textarea class="bg-minor p-2" name="title" id="title" cols="50" rows="1"
                                       required>{{$post->title}}</textarea>
@@ -54,18 +53,13 @@
                 <div class="row d-flex justify-content-center fadeIn">
                     <div class="col-sm-11 addPostBtn p-0 fadeIn">
                         <button type="submit" value="" class="box-shadow">
-                            <div class="row">
-                                <div class="col align-self-start"></div>
-                                <div class="col align-self-center">ZAPISZ POST</div>
-                                <div class="col align-self-end text-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="-80 5 100 10"
-                                         fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
+                            <span class="row">
+                                <span class="col align-self-start"></span>
+                                <span class="col align-self-center">ZAPISZ POST</span>
+                                <span class="col align-self-end d-flex justify-content-end my-auto">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </span>
+                            </span>
                         </button>
                     </div>
                 </div>
