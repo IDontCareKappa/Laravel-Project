@@ -8,8 +8,10 @@
 .bg-main{
     --bs-bg-opacity: 1;
     background-color: #111010 !important;
-    /*background: rgb(17,16,16);*/
-    /*background: linear-gradient(0deg, rgba(17,16,16,1) 0%, rgba(17,16,16,1) 31%, rgba(98,98,98,1) 100%);*/
+}
+
+.dropdown-item-hover:hover{
+    background-color: #333333;
 }
 
 body{

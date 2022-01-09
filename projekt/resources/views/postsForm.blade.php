@@ -38,7 +38,7 @@
         <div class="box box-primary p-2 fadeIn">
             <form role="form" action="{{ route('store') }}" id="comment-form" method="post"
                   enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <div class="box fadeIn">
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('title')?'has-error':'' }}" id="roles_box">

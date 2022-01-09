@@ -17,7 +17,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts', ['posts' => $posts]);
+        return view('posts', ['posts' => $posts, 'showUserPosts' => false]);
     }
 
     /**
@@ -27,10 +27,6 @@ class PostsController extends Controller
      */
     public function create()
     {
-        if (Auth::user() == null) {
-            return redirect()->route('login')->withErrors(['msg' => 'Nie jestes zalogowany']);
-        }
-
         $post = new Post();
         return view('postsForm', ['post' => $post]);
     }
@@ -43,10 +39,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user() == null) {
-            return redirect()->route('login')->withErrors(['msg' => 'Nie jestes zalogowany']);
-        }
-
         $this->validate($request, [
             'title' => 'required|min:5|max:100',
             'message' => 'required|min:10|max:1000',
@@ -84,17 +76,14 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
         if ($post == null) {
             return redirect()->route('posts')->withErrors(['msg' => 'Ten post nie istnieje!']);
         }
 
-        if (Auth::user() == null) {
-            return back()->withErrors(['msg' => 'Nie masz dostępu do tej strony!']);
-        }
         if (Auth::user()->id != $post->user_id) {
             return back()->withErrors(['msg' => 'Nie jesteś autorem tego postu!']);
         }
-
 
         return view('postsEdit', ['post' => $post]);
     }
@@ -183,5 +172,16 @@ class PostsController extends Controller
         }
 
         return back()->withErrors(['msg' => 'Nie udało się wykonać tej operacji!']);
+    }
+
+    public function showUserPosts(){
+        $id = Auth::user()->id;
+        $posts = Post::where('user_id', '=', $id)->get();
+        return view('posts', ['posts' => $posts, 'showUserPosts' => true]);
+    }
+
+    public function showPostsAscending(){
+        $posts = Post::orderBy('created_at', 'asc')->get();
+        return view('posts', ['posts' => $posts]);
     }
 }

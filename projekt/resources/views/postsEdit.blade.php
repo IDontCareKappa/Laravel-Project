@@ -33,7 +33,7 @@
         <div class="box box-primary p-2 fadeIn">
             <form id="post-form" method="post"
                   action="{{ route('updatepost', $post) }}">
-                {{ csrf_field() }}
+                @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="box">
                     <div class="box-body">

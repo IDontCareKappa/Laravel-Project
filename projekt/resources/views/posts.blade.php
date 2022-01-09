@@ -10,8 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('app.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('font-awesome.css') }}">
@@ -44,6 +43,8 @@
             </form>
         @endauth
 
+
+
         @guest
             <div class="table-container text-center mt-3 fadeIn">
                 <b class="text-muted">Zaloguj się aby dodawać posty.</b>
@@ -63,14 +64,33 @@
                 </div>
             </div>
         @endguest
+        @if(!$showUserPosts)
+        <div class="row d-flex justify-content-center mt-3 fadeIn">
+            <div class="col-4"></div>
+            <div class="col-2" >
+                <form action="{{ route('posts') }}">
+                    <button type="submit" value=""  class="p-2 box-shadow smallBtn border-0 text-white">
+                        Najnowsze posty
+                    </button>
+                </form>
 
+            </div>
+            <div class="col-2 " >
+                <form action="{{ route('showPostsAscending') }}">
+                    <button type="submit" value=""  class="p-2 box-shadow smallBtn border-0 text-white">
+                       Najstarsze posty
+                    </button>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        @endif
         <div class="row d-flex justify-content-center mt-5">
             @foreach($posts as $post)
                 <div class="card rounded-0 bg-minor p-0 w-75 m-3 box-shadow fadeIn ">
                     <a href="{{ route('show', [$post->id]) }}"  class="text-decoration-none">
                     <div class="card-body postDemo">
                         <h4 class="card-title text-dark">{{$post->title}}</h4>
-
                     </div>
                     </a>
                     <div class="card-footer">

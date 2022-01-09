@@ -41,30 +41,44 @@
             <div class="card-body border-0 mt-10">
                 <p class="post">{{ $post->message }}</p>
                 @auth
-                    <div class="mt-10">
-                        <p class="h5 text-muted">
+                    <div class="mt-10 row">
+                        <div class="h5 text-muted col-10">
                             OCEŃ POST
-                            <span class="bg-dark rounded-circle m-2">
-                                <a class="text-white h5 p-2"
-                                   href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>1.0]) }}">1</a>
-                            </span>
-                            <span class="bg-dark rounded-circle m-2">
-                                <a class="text-white h5 p-2"
+                            <a class="bg-dark rounded rounded-3 m-2 text-center h5 p-1 text-decoration-none" style="color: #ce3310;"
+                               href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>1.0]) }}"><b>1</b></a>
+                            <a class="bg-dark rounded rounded-3 m-2 text-center h5 p-1 text-decoration-none" style="color: #ce6910;"
                                    href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>2.0]) }}">2</a>
-                            </span>
-                            <span class="bg-dark rounded-circle m-2">
-                                <a class="text-white h5 p-2"
+                            <a class="bg-dark rounded rounded-3 m-2 text-center h5 p-1 text-decoration-none" style="color: #ce9f10;"
                                    href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>3.0]) }}">3</a>
-                            </span>
-                            <span class="bg-dark rounded-circle m-2">
-                                <a class="text-white h5 p-2"
+                            <a class="bg-dark rounded rounded-3 m-2 text-center h5 p-1 text-decoration-none" style="color: #b2ce10;"
                                    href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>4.0]) }}">4</a>
-                            </span>
-                            <span class="bg-dark rounded-circle m-2">
-                                <a class="text-white h5 p-2"
+                            <a class="bg-dark rounded rounded-3 m-2 text-center h5 p-1 text-decoration-none" style="color: #62ce10;"
                                    href="{{ route('addGrade', ['id'=>$post->id, 'grade'=>5.0]) }}">5</a>
-                            </span>
-                        </p>
+                        </div>
+
+                        @if($post->user_id == Auth::user()->id)
+                            <div class="row col-2">
+                                <div class="col-4" >
+                                    <form action="{{ route('delete', $post->id) }}">
+                                        <button type="submit" value=""  class="box-shadow smallBtn border-0" onclick="return confirm('Jesteś pewien?')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-danger" height="20" width="20" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+
+                                </div>
+                                <div class="col-6 " >
+                                    <form action="{{ route('edit', $post) }}">
+                                        <button type="submit" value=""  class="box-shadow smallBtn border-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-info" height="20" width="20" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
 
                     </div>
                 @endauth
@@ -86,6 +100,9 @@
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     </div>
 @endsection

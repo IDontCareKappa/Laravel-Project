@@ -29,10 +29,12 @@
                     <a class="nav-link @yield('profile') dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
-                    <div class="dropdown-menu bg-main" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-white" href="{{ route('profile') }}">Edytuj profil</a>
+                    <div class="dropdown-menu dropdown-menu-dark bg-main" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white dropdown-item-hover" href="{{ route('showUserPosts') }}">Twoje posty</a>
+                        <a class="dropdown-item text-white dropdown-item-hover" href="{{ route('profile') }}">Edytuj profil</a>
+                        <a class="dropdown-item text-white dropdown-item-hover" href="{{ route('showUserStats') }}">Statystyki</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-white" href="{{ route('logout') }}">Wyloguj się</a>
+                        <a class="dropdown-item text-white dropdown-item-hover" href="{{ route('logout') }}">Wyloguj się</a>
                     </div>
                 </div>
             @endauth
