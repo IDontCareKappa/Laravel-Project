@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
+Route::get('/home', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/posts/latest', [App\Http\Controllers\PostsController::class, 'showPostsAscending'])->name('showPostsAscending');
 Route::get('/post/{id}', [App\Http\Controllers\PostsController::class, 'show'])->name('show');

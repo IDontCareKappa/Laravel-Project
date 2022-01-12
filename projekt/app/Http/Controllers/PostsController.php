@@ -182,6 +182,6 @@ class PostsController extends Controller
 
     public function showPostsAscending(){
         $posts = Post::orderBy('created_at', 'asc')->get();
-        return view('posts', ['posts' => $posts]);
+        return view('posts', ['posts' => $posts, 'showUserPosts' => false]);
     }
 }
